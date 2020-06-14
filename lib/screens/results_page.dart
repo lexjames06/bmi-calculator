@@ -1,9 +1,15 @@
-import 'package:bmi_calculator/components/constants.dart';
+import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/material.dart';
-import 'reusable_card.dart';
-import 'components/bottom_button.dart';
+import '../components/reusable_card.dart';
+import '../components/bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
+  ResultsPage({this.bmiResult, this.resultText, this.interpretation});
+
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,24 +34,24 @@ class ResultsPage extends StatelessWidget {
             flex: 5,
             child: ReusableCard(
               cardColor: kActiveCardColor,
-              cardChild: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Text(
-                      'OVERWEIGHT',
-                      style: kResultTitle,
-                    ),
-                    Text(
-                      '100',
-                      style: kLargeNumberResult,
-                    ),
-                    Text(
-                      'import info',
-                      style: kResultDescription,
-                    ),
-                  ],
-                ),
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    resultText,
+                    style: kResultTitle,
+                  ),
+                  Text(
+                    bmiResult,
+                    style: kLargeNumberResult,
+                  ),
+                  Text(
+                    interpretation,
+                    textAlign: TextAlign.center,
+                    style: kResultDescription,
+                  ),
+                ],
               ),
             ),
           ),
